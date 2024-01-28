@@ -1,0 +1,73 @@
+<section id="skills">
+  <div class="container">
+    <h2>
+      <strong>Skills</strong>
+    </h2>
+    <span class="bar-title mb-5"></span>
+    <div class="row mt-2">
+      <div
+        class="col-lg-4"
+        data-aos="fade-up "
+        data-aos-anchor-placement="center-bottom"
+        data-aos-delay="300"
+      >
+        <h5 class="h5">
+          <strong>Technologies</strong>
+        </h5>
+        <div id="skillgraph">
+          <div class="row skill-row" *ngFor="let tech of skills.technologies">
+            <div class="label d-flex flex-row">
+              <span class="skillLabel">{{ tech.name }}</span>
+              <span class="skill-percent">{{ tech.percent }}%</span>
+            </div>
+            <span class="skillData-Wrapper">
+              <span class="skillData bg-rust" [ngClass]="tech.remark"></span>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        class="col-lg-4"
+        data-aos="fade-down"
+        data-aos-anchor-placement="center-bottom"
+        data-aos-delay="300"
+      >
+        <h5 class="h5">
+          <strong>Tools</strong>
+        </h5>
+        <div id="skillgraph" class="panel panel-default">
+          <div class="row skill-row" *ngFor="let tool of skills.tools">
+            <div class="label d-flex flex-row">
+              <span class="skillLabel">{{ tool.name }}</span>
+              <span class="skill-percent">{{ tool.percent }}%</span>
+            </div>
+            <span class="skillData-Wrapper">
+              <span class="skillData bg-rust" [ngClass]="tool.remark"></span>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        class="col-lg-4"
+        data-aos="fade-up"
+        data-aos-anchor-placement="center-bottom"
+        data-aos-delay="300"
+      >
+        <h5 class="h5">
+          <strong>Methodologies</strong>
+        </h5>
+        <div id="skillgraph" class="panel panel-default">
+          <div class="row skill-row" *ngFor="let meth of skills.methodologies">
+            <div class="label d-flex flex-row">
+              <span class="skillLabel">{{ meth.name }}</span>
+              <span class="skill-percent">{{ meth.percent }}%</span>
+            </div>
+            <span class="skillData-Wrapper">
+              <span [ngClass]="meth.remark" class="skillData bg-rust"></span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,25 @@
+<section id="blog">
+    <div class="container">
+        <h2><strong>Blogs</strong></h2>
+        <span class="bar-title mb-5"></span>
+        <div class="row">
+            <div class="col-lg-4 col-sm-12 " data-aos="flip-up" *ngFor="let blog of blogs;">
+                <div class="card shadow-lg p-3 mb-5 bg-white rounded">
+                    <div class="card-header d-flex flex-column " style="height: 300px; width: 100%; ">
+                        <div id="{{blog.id}}-img" class="img-wrap" style="height: 400px;width: 100%;  "
+                            [ngStyle]="{'backgroundImage':'url('+blog.images.src+')'}">
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">{{blog.name}}</h3>
+                        <div class="d-flex flex-row justify-content-center">
+                            <a href="{{blog.url}}" target="_blank" target="_blank"
+                                type="button" class="btn btn-primary m-r">Go to Blog</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
