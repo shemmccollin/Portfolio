@@ -9,7 +9,10 @@ import { CvComponent } from './cv/cv.component';
 import { PortfolioComponent } from './portfolio/portfolio.component';
 import { BlogComponent } from './blog/blog.component';
 import { ContactComponent } from './contact/contact.component';
+import { PortfolioActions } from './shared/state/portfolio.action';
+import { Store } from '@ngrx/store';
 import AOS from 'aos';
+import { ToastModule } from 'primeng/toast';
 
 @Component({
   selector: 'app-root',
@@ -27,10 +30,14 @@ import AOS from 'aos';
     PortfolioComponent,
     BlogComponent,
     ContactComponent,
+    ToastModule
   ],
 })
 export class AppComponent implements OnInit {
+  constructor(private store: Store<any>) {}
   ngOnInit(): void {
-    AOS.init();
+  
+    this.store.dispatch(PortfolioActions.loadPortfolio());
+    AOS.init();  
   }
 }

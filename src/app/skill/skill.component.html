@@ -15,7 +15,7 @@
           <strong>Technologies</strong>
         </h5>
         <div id="skillgraph">
-          <div class="row skill-row" *ngFor="let tech of skills.technologies">
+          <div class="row skill-row" *ngFor="let tech of skills?.technologies">
             <div class="label d-flex flex-row">
               <span class="skillLabel">{{ tech.name }}</span>
               <span class="skill-percent">{{ tech.percent }}%</span>
@@ -36,7 +36,7 @@
           <strong>Tools</strong>
         </h5>
         <div id="skillgraph" class="panel panel-default">
-          <div class="row skill-row" *ngFor="let tool of skills.tools">
+          <div class="row skill-row" *ngFor="let tool of skills?.tools">
             <div class="label d-flex flex-row">
               <span class="skillLabel">{{ tool.name }}</span>
               <span class="skill-percent">{{ tool.percent }}%</span>
@@ -57,7 +57,7 @@
           <strong>Methodologies</strong>
         </h5>
         <div id="skillgraph" class="panel panel-default">
-          <div class="row skill-row" *ngFor="let meth of skills.methodologies">
+          <div class="row skill-row" *ngFor="let meth of skills?.methodologies">
             <div class="label d-flex flex-row">
               <span class="skillLabel">{{ meth.name }}</span>
               <span class="skill-percent">{{ meth.percent }}%</span>

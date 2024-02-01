@@ -1,5 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
 import Typed from 'typed.js';
+import { Home, State } from '../types/types';
+import { PorfolioFeature } from '../shared/state/portfolio.state';
+import { Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -8,16 +12,34 @@ import Typed from 'typed.js';
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
-export class HomeComponent implements OnInit {
-  ngOnInit(): void {
-    var options = {
-      strings: ['', 'Full-Stack', 'C#', 'Solutions Architect', 'Scrum Master'],
-      typeSpeed: 120,
-      backSpeed: 100,
-      loop: true,
-    };
+export class HomeComponent implements OnInit, OnDestroy {
+  constructor(private store: Store<State>) {}
 
-    var typed = new Typed('.typed', options);
-    typed.reset(true);
+  subscription: Subscription = new Subscription();
+  home: Home | null | undefined;
+
+  ngOnInit(): void {
+    this.subscription.add(
+      this.store.select(PorfolioFeature.selectHome).subscribe((home) => {
+        this.home = home;
+        
+        if (home?.headlines != null) {
+          
+          var options = {
+            strings: this.home?.headlines ?? [''],
+            typeSpeed: 120,
+            backSpeed: 100,
+            loop: true,
+          };
+
+          var typed = new Typed('.typed', options);
+          typed.reset(true);
+        }
+      })
+    );
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 }

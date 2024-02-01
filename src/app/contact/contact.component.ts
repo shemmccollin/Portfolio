@@ -6,8 +6,11 @@ import {
   Validators,
 } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { ContactForm } from '../types/types';
-import { ServiceService } from '../service/service.service';
+import { State } from '../types/types';
+import { PortfolioActions } from '../shared/state/portfolio.action';
+import { Store } from '@ngrx/store';
+
+
 @Component({
   selector: 'app-contact',
   standalone: true,
@@ -16,7 +19,9 @@ import { ServiceService } from '../service/service.service';
   styleUrl: './contact.component.scss',
 })
 export class ContactComponent {
-  contactForm= new FormGroup({
+  constructor(private store: Store<State>) {}
+
+  contactForm = new FormGroup<any>({
     name: new FormControl('', [
       Validators.required,
       Validators.maxLength(50),
@@ -40,10 +45,10 @@ export class ContactComponent {
     ]),
   });
 
-  constructor(private service: ServiceService){}
-
   onSubmit() {
-    //console.log(this.contactForm.value);
-    this.service.postContactEmail(this.contactForm.value as ContactForm);
+    this.store.dispatch(
+      PortfolioActions.postContact(this.contactForm.getRawValue())
+    );
+    this.contactForm.reset();
   }
 }
