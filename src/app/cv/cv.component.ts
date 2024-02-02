@@ -3,9 +3,9 @@ import { CommonModule } from '@angular/common';
 import * as awesome from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { Store } from '@ngrx/store';
-import { Education, State, Work } from '../types/types';
-import { Observable, Subscription } from 'rxjs';
-import { PorfolioFeature } from '../shared/state/portfolio.state';
+import { State } from '../types/types';
+import {  Subscription } from 'rxjs';
+import { PortfolioFeature } from '../shared/state/portfolio.state';
 import { cloneDeep } from 'lodash';
 
 @Component({
@@ -16,7 +16,7 @@ import { cloneDeep } from 'lodash';
   styleUrl: './cv.component.scss',
 })
 export class CvComponent implements OnInit, OnDestroy {
-  education$: any = this.store.select(PorfolioFeature.selectEducation);
+  education$: any = this.store.select(PortfolioFeature.selectEducation);
   work: any;
   hobby1: any;
   hobby2: any;
@@ -29,7 +29,7 @@ export class CvComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.subscription.add(
-      this.store.select(PorfolioFeature.selectWork).subscribe((work) => {
+      this.store.select(PortfolioFeature.selectWork).subscribe((work) => {
         this.work = cloneDeep(work);
       })
     );

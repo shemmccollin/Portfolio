@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PorfolioFeature } from '../shared/state/portfolio.state';
+import { PortfolioFeature } from '../shared/state/portfolio.state';
 import {  Store } from '@ngrx/store';
-import { About, Skills, State } from '../types/types';
-import { Observable } from 'rxjs';
+import { Skills, State } from '../types/types';
+
 
 @Component({
   selector: 'app-skill',
@@ -18,7 +18,7 @@ export class SkillComponent implements OnInit {
   skills: Skills | null | undefined;
   
   ngOnInit(): void {
-    this.store.select(PorfolioFeature.selectSkills).subscribe((skills) => {
+    this.store.select(PortfolioFeature.selectSkills).subscribe((skills) => {
       this.skills = skills;
     });
   }

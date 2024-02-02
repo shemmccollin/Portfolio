@@ -1,12 +1,6 @@
-import { isDevMode } from '@angular/core';
 import {
-  ActionReducer,
-  ActionReducerMap,
   createFeature,
-  createFeatureSelector,
   createReducer,
-  createSelector,
-  MetaReducer,
   on,
 } from '@ngrx/store';
 import { PortfolioActions } from './portfolio.action';
@@ -60,7 +54,7 @@ export const initialState: State = {
   error: null,
 };
 
-export const PorfolioFeature = createFeature({
+export const PortfolioFeature = createFeature({
   name: 'Porfolio',
   reducer: createReducer(
     initialState,

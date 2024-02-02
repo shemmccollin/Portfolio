@@ -2,8 +2,8 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import Typed from 'typed.js';
 import { Home, State } from '../types/types';
-import { PorfolioFeature } from '../shared/state/portfolio.state';
-import { Observable, Subscription } from 'rxjs';
+import { PortfolioFeature } from '../shared/state/portfolio.state';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.subscription.add(
-      this.store.select(PorfolioFeature.selectHome).subscribe((home) => {
+      this.store.select(PortfolioFeature.selectHome).subscribe((home) => {
         this.home = home;
         
         if (home?.headlines != null) {

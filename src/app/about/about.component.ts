@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import * as awesome from '@fortawesome/free-solid-svg-icons';
 import * as brands from '@fortawesome/free-brands-svg-icons';
-import { PorfolioFeature } from '../shared/state/portfolio.state';
+import { PortfolioFeature } from '../shared/state/portfolio.state';
 import { Store } from '@ngrx/store';
 import { About, State } from '../types/types';
 import { Subscription } from 'rxjs';
@@ -34,7 +34,7 @@ export class AboutComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.subscription.add(
-      this.store.select(PorfolioFeature.selectAbout).subscribe((about) => {
+      this.store.select(PortfolioFeature.selectAbout).subscribe((about) => {
         this.about = about;
       })
     );

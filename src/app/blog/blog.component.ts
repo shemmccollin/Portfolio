@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PorfolioFeature } from '../shared/state/portfolio.state';
+import { PortfolioFeature } from '../shared/state/portfolio.state';
 import { Store } from '@ngrx/store';
 import { State } from '../types/types';
 import { Subscription } from 'rxjs';
@@ -21,7 +21,7 @@ export class BlogComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.subscription.add(
-      this.store.select(PorfolioFeature.selectBlog).subscribe((blogs) => {
+      this.store.select(PortfolioFeature.selectBlog).subscribe((blogs) => {
         this.blogs = blogs;
       })
     );
